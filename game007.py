@@ -6,7 +6,6 @@ class Player:
         self.name = name
         self.drinking_capacity = drinking_capacity
         self.drinks = 0
-        self.dring_before = 0
 
 def show_drinks_status(players):
         for p in players:
