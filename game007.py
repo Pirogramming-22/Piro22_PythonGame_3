@@ -1,7 +1,7 @@
 import random
 import time
 
-class Player:
+'''class Player:
     def __init__(self, name, drinking_capacity, computer_flag, game_starter):
         self.name = name
         self.drinking_capacity = drinking_capacity
@@ -12,7 +12,7 @@ class Player:
 def show_drinks_status(players):
         for p in players:
             print(f"{p.name}은(는) 지금까지 {p.drinks}🍺! 치사량까지 {p.drinking_capacity - p.drinks}")
-        print()
+        print()'''
 
 def gonggongchilbbang(players):
 
@@ -125,8 +125,9 @@ def gonggongchilbbang(players):
                 print(f"{current.name}이(가) 실수했습니다! 술을 마십니다.\n")
                 time.sleep(1)
                 current.drinks += 1
-                current_player = (current_player + 1) % len(players)
-                show_drinks_status(players)
-                return [current.name, current.drinks]
+                return players
+                #current_player = (current_player + 1) % len(players)
+                #show_drinks_status(players)
+                #return [current.name, current.drinks]
 
         expected_index = (expected_index + 1) % len(sequence)

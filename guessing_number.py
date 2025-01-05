@@ -1,12 +1,12 @@
 import random
 import time
 
-class Player:
+'''class Player:
     def __init__(self, name, drinking_capacity, computer_flag):
         self.name = name
         self.drinking_capacity = drinking_capacity
         self.drinks = 0
-        self.computer_flag = computer_flag
+        self.computer_flag = computer_flag'''
 
 
 def multiplayer_guess_game(players):
@@ -44,8 +44,10 @@ def multiplayer_guess_game(players):
         if guess == number_to_guess:
             if not current_player.computer_flag:
                 print(f"축하합니다! {current_player.name}이(가) {current_player.drinks}번 만에 정답을 맞췄습니다!")
+                return players
             else:
                 print(f"{current_player.name}이(가) {current_player.drinks}번 만에 정답을 맞췄습니다. 다음엔 더 잘하세요!")
+                return players
             break
         elif guess < number_to_guess:
             print("너무 낮습니다!")
@@ -56,7 +58,7 @@ def multiplayer_guess_game(players):
 
         turn += 1
 
-if __name__ == "__main__":
+'''if __name__ == "__main__":
     
     # 테스트용 플레이어 생성
     players = [
@@ -66,4 +68,4 @@ if __name__ == "__main__":
         Player("c", 6, True)
     ]
 
-    multiplayer_guess_game(players)
+    multiplayer_guess_game(players)'''

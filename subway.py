@@ -47,14 +47,14 @@ def rhythm_text(text, width):
 def time_up():
   raise SystemExit
 
-def set_loser(player_list, loser):
+'''def set_loser(player_list, loser):
   start_index = next(i for i, player in enumerate(player_list) if player.game_starter)
   origin_loser = player_list[start_index]
   if origin_loser.name == loser.name:
     return
   else:
     origin_loser.game_starter = False
-    loser.game_starter = True
+    loser.game_starter = True'''
     
 def subway(player_list):
   line_list =["1호선","2호선","3호선","4호선","5호선","6호선","7호선","8호선","9호선","GTX-A","경강선","경의선","경춘선","공항철도","김포도시철도","서해선","수인분당선","신림선","신분당선","용인경전철","우이신설경전철","의정부경전철","인천2호선","인천선"]
@@ -63,7 +63,7 @@ def subway(player_list):
   cq = CircularQueue(len(player_list))
   record = []
   
-  '''print("""
+  print("""
                       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣷⡄⠀⢀⣴⣿⣿⣷⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
                       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠨⣿⣿⣿⣿⡟⠀⠰⣿⣿⣿⣿⣟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
                       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠻⠛⠏⠀⠀⠀⠙⠻⠛⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -120,7 +120,7 @@ def subway(player_list):
                          \______| /__/     \__\ |__|  |__| |_______|
                                                                     
 
-                        """)'''
+                        """)
   time.sleep(1)
   for player in player_list:
     print(player.name, player.drinking_capacity, player.computer_flag, player.game_starter)
@@ -175,7 +175,7 @@ def subway(player_list):
           else:
             print(f'아 누가 술을 마셔 {current_speaker.name}이(가) 술을 마셔 👏 원샷~!')
             current_speaker.drinks += 1
-            set_loser(player_list,current_speaker)
+            #set_loser(player_list,current_speaker)
             return player_list
 
     else:
@@ -193,6 +193,6 @@ def subway(player_list):
       
       print(f'아 누가 술을 마셔 {current_speaker.name}이(가) 술을 마셔 👏 원샷~!')
       current_speaker.drinks += 1
-      set_loser(player_list,current_speaker)
+      #set_loser(player_list,current_speaker)
       return player_list
           

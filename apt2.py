@@ -1,7 +1,7 @@
 import random
 import time
 
-class Player:
+'''class Player:
     def __init__(self, name, drinking_capacity, computer_flag, game_starter):
         self.name = name
         self.drinking_capacity = drinking_capacity
@@ -12,7 +12,7 @@ class Player:
 def show_drinks_status(players):
     for p in players:
         print(f"{p.name}은(는) 지금까지 {p.drinks}🍺! 치사량까지 {p.drinking_capacity - p.drinks}")
-    print()
+    print()'''
 
 def apt(players):
     print("\n🏡 아파트~아파트~아파트~ (feat.APT) 🏡\n")
@@ -56,15 +56,15 @@ def apt(players):
         time.sleep(1)
 
         # 현재 상태 출력
-        show_drinks_status(players)
-        return 
+        #show_drinks_status(players)
+        return players 
         # 치사량 도달 여부 확인
-        if new_leader.drinks >= new_leader.drinking_capacity:
+        '''if new_leader.drinks >= new_leader.drinking_capacity:
             print(f"\n💔 {new_leader.name}이(가) 치사량에 도달했습니다! 게임 종료! 💔")
-            break
+            break'''
 
 # 테스트용:
-if __name__ == "__main__":
+'''if __name__ == "__main__":
     players = [
         Player("건욱", random.choice([2, 4, 6, 8, 10]), True, False),
         Player("예원", random.choice([2, 4, 6, 8, 10]), True, False),
@@ -73,4 +73,4 @@ if __name__ == "__main__":
         Player("유지", random.choice([2, 4, 6, 8, 10]), True, False)
     ]
 
-    apt(players)
+    apt(players)'''
