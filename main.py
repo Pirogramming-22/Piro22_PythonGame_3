@@ -1,4 +1,5 @@
 from game007 import Player, gonggongchilbbang
+from apt2 import Player, apt
 import random
 
 drinking_capacity = [2, 4, 6, 8, 10]
