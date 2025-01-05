@@ -2,10 +2,12 @@ import random
 import time
 
 class Player:
-    def __init__(self, name, drinking_capacity):
+    def __init__(self, name, drinking_capacity, computer_flag, game_starter):
         self.name = name
         self.drinking_capacity = drinking_capacity
         self.drinks = 0
+        self.computer_flag = computer_flag
+        self.game_starter = game_starter
 
 def show_drinks_status(players):
         for p in players:
