@@ -5,17 +5,17 @@ drinking_capacity = [2, 4, 6, 8, 10]
 
 main_character = input("오늘 거하게 취해볼 당신의 이름은? : ")
 
-main_player = [Player(main_character, random.choice(drinking_capacity))]
+main_player = [Player(main_character, random.choice(drinking_capacity), 0, 0)]
 
 
 number_of_player = int(input("함께 취할 친구들은 얼마나 필요하신가요? (사회적 거리두기로 인해 최대 3명까지 초대할 수 있어요!) : "))
 
 player_list = [
-    Player("건욱", random.choice(drinking_capacity)),
-    Player("예원", random.choice(drinking_capacity)),
-    Player("태린", random.choice(drinking_capacity)),
-    Player("현진", random.choice(drinking_capacity)),
-    Player("유지", random.choice(drinking_capacity))
+    Player("건욱", random.choice(drinking_capacity), 0, 0),
+    Player("예원", random.choice(drinking_capacity), 0, 0),
+    Player("태린", random.choice(drinking_capacity), 0, 0),
+    Player("현진", random.choice(drinking_capacity), 0, 0),
+    Player("유지", random.choice(drinking_capacity), 0, 0)
 ]
 
 main_player_filter = [p for p in player_list if p.name != main_character]
