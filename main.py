@@ -1,23 +1,24 @@
 from game007 import Player, gonggongchilbbang
 from guessing_number import Player, multiplayer_guess_game
+from apt2 import Player,apt
 import random
 
 drinking_capacity = [2, 4, 6, 8, 10]
 
 main_character = input("오늘 거하게 취해볼 당신의 이름은? : ")
 
-main_player = [Player(main_character, random.choice(drinking_capacity), False)] 
+main_player = [Player(main_character, random.choice(drinking_capacity), False,0)] 
 
 
 number_of_player = int(input("함께 취할 친구들은 얼마나 필요하신가요? (사회적 거리두기로 인해 최대 3명까지 초대할 수 있어요!) : "))
 
 player_list = [
 
-    Player("건욱", random.choice(drinking_capacity), True),
-    Player("예원", random.choice(drinking_capacity), True),
-    Player("태린", random.choice(drinking_capacity), True),
-    Player("현진", random.choice(drinking_capacity), True),
-    Player("유지", random.choice(drinking_capacity), True)
+    Player("건욱", random.choice(drinking_capacity), True,0),
+    Player("예원", random.choice(drinking_capacity), True,0),
+    Player("태린", random.choice(drinking_capacity), True,0),
+    Player("현진", random.choice(drinking_capacity), True,0),
+    Player("유지", random.choice(drinking_capacity), True,0)
 ]
 
 main_player_filter = [p for p in player_list if p.name != main_character]
@@ -36,6 +37,7 @@ while True:
     print("\n🍺 ~~~ Alcohol GAME Menu ~~~ 🍺")
     print("1. 공공칠빵 게임")
     print("2. 숫자 맞추기 게임")
+    print("3. 아파트트 게임")
     print("exit. 게임 종료")
     choice = input("원하는 게임 번호를 선택하세요: ")
 
@@ -45,6 +47,9 @@ while True:
     elif choice == '2':
         print("\n🍺 숫자 맞추기 게임을 시작합니다! 🍺")
         multiplayer_guess_game(main_player + selected_player)
+    elif choice == '3':
+        print("\n🍺 아파트게임을 시작합니다! 🍺")
+        apt(main_player + selected_player)
     elif choice.lower() == 'exit':
         print("\n🍺 게임을 종료합니다. 다음에 또 만나요! 🍺")
         break
