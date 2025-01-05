@@ -1,10 +1,12 @@
 import random
 
 class Player:
-    def __init__(self, name, drinking_capacity):
+    def __init__(self, name, drinking_capacity, computer_flag = False, game_starter = False):
         self.name = name
         self.drinking_capacity = drinking_capacity
         self.drinks = 0
+        self.computer_flag = computer_flag
+        self.game_starter = game_starter
 
 def play_369_game(players):
     print("! ! 삼 육 구 3 6 9 삼 육 구 3 6 9 ! !")
@@ -39,21 +41,15 @@ def play_369_game(players):
                 if player_input == ' ' and ('3' in str(round_number) or '6' in str(round_number) or '9' in str(round_number)):
                     print(f"{player.name}님이 손뼉을 쳤습니다.")
                 
-                round_number += 1
-                if players[current_player_idx].drinks >= players[current_player_idx].drinking_capacity:
-                    print(f"{players[current_player_idx].name}님이 치사량에 도달했습니다! 게임 종료!")
-                    return
-
-                
             else:
                 # 다른 플레이어
                 if '3' in str(round_number) or '6' in str(round_number) or '9' in str(round_number):
                     print(f"{player.name}: 손뼉")
                 else:
                     print(f"{player.name}: {round_number}")
-                round_number += 1
-                if players[current_player_idx].drinks >= players[current_player_idx].drinking_capacity:
-                    print(f"{players[current_player_idx].name}님이 치사량에 도달했습니다! 게임 종료!")
-                    return
+            round_number += 1
+            if players[current_player_idx].drinks >= players[current_player_idx].drinking_capacity:
+                print(f"{players[current_player_idx].name}님이 치사량에 도달했습니다! 게임 종료!")
+                return
 
-                current_player_idx = (current_player_idx + 1) % len(players)
+            current_player_idx = (current_player_idx + 1) % len(players)

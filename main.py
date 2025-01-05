@@ -1,6 +1,7 @@
 from game007 import Player, gonggongchilbbang
 from guessing_number import Player, multiplayer_guess_game
 from apt2 import Player,apt
+from game369 import Player, play_369_game
 import random
 
 drinking_capacity = [2, 4, 6, 8, 10]
@@ -37,7 +38,8 @@ while True:
     print("\n🍺 ~~~ Alcohol GAME Menu ~~~ 🍺")
     print("1. 공공칠빵 게임")
     print("2. 숫자 맞추기 게임")
-    print("3. 아파트트 게임")
+    print("3. 아파트 게임")
+    print("4. 369 게임")
     print("exit. 게임 종료")
     choice = input("원하는 게임 번호를 선택하세요: ")
 
@@ -50,6 +52,9 @@ while True:
     elif choice == '3':
         print("\n🍺 아파트게임을 시작합니다! 🍺")
         apt(main_player + selected_player)
+    elif choice == '4':
+        print("\n🍺 아파트게임을 시작합니다! 🍺")
+        play_369_game(main_player + selected_player)
     elif choice.lower() == 'exit':
         print("\n🍺 게임을 종료합니다. 다음에 또 만나요! 🍺")
         break
