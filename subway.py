@@ -37,15 +37,6 @@ class CircularQueue:
       
     def show_all(self):
       print(self.queue)
-
-
-class Player:
-  def __init__(self, name, drinking_capacity, computer_flag, game_starter):
-    self.name = name
-    self.drinking_capacity = drinking_capacity
-    self.drinks = 0
-    self.computer_flag = computer_flag
-    self.game_starter =game_starter
     
 def rhythm_text(text, width):
   for i in range(len(text) + width):
