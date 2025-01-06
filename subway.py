@@ -152,7 +152,10 @@ def subway(player_list):
             rhythm_text(text, width)
             repeat_flag=False
   
-  with open('./서울시 지하철역 정보 검색 (역명).json',"r", encoding="utf-8") as sd:
+  script_dir = os.path.dirname(os.path.abspath(__file__))
+  file_path = os.path.join(script_dir, '서울시 지하철역 정보 검색 (역명).json')
+  
+  with open(file_path,"r", encoding="utf-8") as sd:
     data = json.load(sd)
   
   start_index = next(i for i, player in enumerate(player_list) if player.game_starter)
