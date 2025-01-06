@@ -20,7 +20,7 @@ def start_game():
     while True:
         play = input("게임을 진행할까요?(y/n): ")
         if play == "Y" or play == "y":
-            break;
+            break
 #start logo 띄우는 함수
 def input_user_name():
     user_name = input("📢오늘 씬나게 놀아볼 당신의 이름은?? >_O ")

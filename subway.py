@@ -170,7 +170,7 @@ def subway(player_list):
       for index, station in enumerate(data["DATA"]):
         if index == station_decision:
           time.sleep(1)
-          print(station["station_nm"])
+          print(f'{current_speaker.name} : {station["station_nm"]}')
           if station["line_num"] == line_decision and station["line_num"] not in record:
             record.append(station["line_num"])
             skip_flag = True
