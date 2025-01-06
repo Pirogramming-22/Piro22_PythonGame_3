@@ -122,8 +122,7 @@ def subway(player_list):
 
                         """)
   time.sleep(1)
-  for player in player_list:
-    print(player.name, player.drinking_capacity, player.computer_flag, player.game_starter)
+
   while(repeat_flag):
     text = "지하철~ 지하철~ 지하철~ 지하철~ 지하철~ 지하철~"
     width = 60  # 출력창 너비
@@ -139,10 +138,11 @@ def subway(player_list):
           rhythm_text(text, width)
           repeat_flag=False
         else:
-          line_decision = input('어떤 노선으로 게임을 진행하시겠습니까? ').strip()
-        
+          line_decision = input('어떤 노선으로 게임을 진행하시겠습니까? ')
+          print(line_decision)
           if line_decision not in line_list:
             rhythm_text("X신 샷 아 X신 샷 X신 샷은 BGM이 없어요~", 60)
+            print(f'{i.name}이(가) 술을 마셨다')
             i.drinks += 1
             if i.drinks >= i.drinking_capacity:
               return player_list
@@ -163,20 +163,24 @@ def subway(player_list):
   while True:
     current_speaker = cq.dequeue()
     if current_speaker.computer_flag:
-      
+      skip_flag = False
       station_decision = random.randint(0,794)
       
       for index, station in enumerate(data["DATA"]):
         if index == station_decision:
+          time.sleep(1)
           print(station["station_nm"])
           if station["line_num"] == line_decision and station["line_num"] not in record:
             record.append(station["line_num"])
-            continue
-          else:
-            print(f'아 누가 술을 마셔 {current_speaker.name}이(가) 술을 마셔 👏 원샷~!')
-            current_speaker.drinks += 1
+            skip_flag = True
+      
+      if skip_flag:
+        continue
+      
+      print(f'아 누가 술을 마셔 {current_speaker.name}이(가) 술을 마셔 👏 원샷~!')
+      current_speaker.drinks += 1
             #set_loser(player_list,current_speaker)
-            return player_list
+      return player_list
 
     else:
       station_decision = input('역의 이름을 입력하시오.').strip()
@@ -195,4 +199,4 @@ def subway(player_list):
       current_speaker.drinks += 1
       #set_loser(player_list,current_speaker)
       return player_list
-          
+    cq.enqueue(current_speaker)
