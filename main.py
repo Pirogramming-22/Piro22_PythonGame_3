@@ -170,14 +170,22 @@ def main():
             players = game369.play_369_game(players)
         elif choice == 5:
             players = subway.subway(players)
-        
-        origin_selector = players[next(i for i, player in enumerate(players) if player.game_starter)]
-        while True:
-            sindex = random.randint(1, len(players)-1)
-            if origin_selector.name != players[sindex].name:
-                origin_selector.game_starter = False
-                players[sindex].game_starter = True
-                break
+           # 기존 코드 수정
+    try:
+        origin_index = next(i for i, player in enumerate(players) if player.game_starter)
+        origin_selector = players[origin_index]
+    except StopIteration:
+        # game_starter가 True인 플레이어가 없을 때 처리
+        print("Error: No player is marked as game starter. Setting the first player as the starter.")
+        players[0].game_starter = True
+        origin_selector = players[0]
+    
+    while True:
+        sindex = random.randint(1, len(players)-1)
+        if origin_selector.name != players[sindex].name:
+            origin_selector.game_starter = False
+            players[sindex].game_starter = True
+            break
         
 if __name__ == "__main__":
     main()
