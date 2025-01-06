@@ -9,35 +9,39 @@ class Player:
         self.computer_flag = computer_flag
 
 
-def show_drinks_status(players):
-    for p in players:
-        print(f"{p.name}은(는) 지금까지 {p.drinks}잔! 치사량까지 {p.drinking_capacity - p.drinks}잔 남음.")
-    print()
+def print_welcome_message():
+    print("🌟" * 40)
+    print("🌟                  소주🍶🍶 뚜껑 숫자 맞추기 게임!                       🌟")
+    print("🌟" * 40)
+    print("\n🎉 Welcome to the Soju Cap Number Guessing Game! 🎉\n")
+    print("게임을 시작합니다! 🍾🔥 모두 행운을 빕니다! 🥳")
+    print("-" * 40)
+
 
 
 def multiplayer_guess_game(players):
-    print("소주🍶 뚜껑 숫자 맞추기 게임에 오신 것을 환영합니다!")
+    print_welcome_message()
 
-
-    # 문제 내는 사람 랜덤 선택
-    setter = random.choice(players)
-    print(f"{setter.name}이(가) 문제를 냅니다.")
+    # 문제 내는 사람 랜덤 선택 (사용자는 제외)
+    non_user_players = [player for player in players if player.computer_flag]
+    setter = random.choice(non_user_players)
+    print(f"✅ {setter.name}이(가) 문제를 냅니다.")
 
     # 문제 번호 1~50 사이 랜덤 생성
     number_to_guess = random.randint(1, 50)
     print(f"문제가 설정되었습니다. (1~50 사이의 숫자)")
 
-    # 문제 내는 사람 제외
-    players = [player for player in players if player != setter]
-    print(f"게임 참가자: {', '.join(player.name for player in players)}")
+    # 문제 내는 사람 제외한 플레이어 리스트
+    participants = [player for player in players if player != setter]
+    print(f"게임 참가자: {', '.join(player.name for player in participants)}")
 
     turn = 0
     lower_bound = 1
     upper_bound = 50
 
     while True:
-        current_player = players[turn % len(players)]
-        print(f"{current_player.name}의 차례입니다.")
+        current_player = participants[turn % len(participants)]
+        print(f"📍 {current_player.name}의 차례입니다.📍")
 
         if not current_player.computer_flag:
             guess = int(input(f"숫자를 입력하세요 (범위: {lower_bound} ~ {upper_bound}): "))
@@ -46,13 +50,12 @@ def multiplayer_guess_game(players):
             time.sleep(2)  # 2초 텀 추가
             print(f"{current_player.name}의 추측: {guess}")
 
-        current_player.drinks += 1
-
         if guess == number_to_guess:
             if not current_player.computer_flag:
-                print(f"축하합니다! {current_player.name}이(가) {current_player.drinks}번 만에 정답을 맞췄습니다!")
+                print(f"🎉🎉 축하합니다! {current_player.name}이(가) 정답을 맞췄습니다! 🎉🎉")
             else:
-                print(f"{current_player.name}이(가) {current_player.drinks}번 만에 정답을 맞췄습니다. 다음엔 더 잘하세요!")
+                print(f"😭😭 {current_player.name}이(가) 정답을 맞췄습니다. 다음엔 더 잘하세요!")
+            winner = current_player
             break
         elif guess < number_to_guess:
             print("너무 낮습니다!")
@@ -63,13 +66,14 @@ def multiplayer_guess_game(players):
 
         turn += 1
 
-    # 치사량 업데이트
-    for player in players:
-        if player != current_player:
-            player.drinking_capacity -= 1
+    # 진 사람들의 drinks만 1 감소 (이긴 사람의 drinks는 변화 없음)
+    for player in participants:
+        if player != winner:
+            player.drinks += 1
 
-    print("\n게임 종료! 각 플레이어의 상태:")
-    show_drinks_status(players)
+    # 모든 플레이어와 문제 내는 사람 포함하여 반환
+    return players
+
 
 
 if __name__ == "__main__":
