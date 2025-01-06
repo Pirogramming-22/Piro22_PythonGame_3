@@ -139,10 +139,11 @@ def subway(player_list):
           repeat_flag=False
         else:
           line_decision = input('어떤 노선으로 게임을 진행하시겠습니까? ')
-          print(line_decision)
+
           if line_decision not in line_list:
             rhythm_text("X신 샷 아 X신 샷 X신 샷은 BGM이 없어요~", 60)
             print(f'{i.name}이(가) 술을 마셨다')
+            time.sleep(1)
             i.drinks += 1
             if i.drinks >= i.drinking_capacity:
               return player_list
@@ -151,7 +152,7 @@ def subway(player_list):
             rhythm_text(text, width)
             repeat_flag=False
   
-  with open('서울시 지하철역 정보 검색 (역명).json',"r", encoding="utf-8") as sd:
+  with open('./서울시 지하철역 정보 검색 (역명).json',"r", encoding="utf-8") as sd:
     data = json.load(sd)
   
   start_index = next(i for i, player in enumerate(player_list) if player.game_starter)
