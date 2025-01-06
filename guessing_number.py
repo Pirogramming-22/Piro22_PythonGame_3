@@ -9,8 +9,15 @@ class Player:
         self.computer_flag = computer_flag
 
 
+def show_drinks_status(players):
+    for p in players:
+        print(f"{p.name}은(는) 지금까지 {p.drinks}잔! 치사량까지 {p.drinking_capacity - p.drinks}잔 남음.")
+    print()
+
+
 def multiplayer_guess_game(players):
     print("소주🍶 뚜껑 숫자 맞추기 게임에 오신 것을 환영합니다!")
+
 
     # 문제 내는 사람 랜덤 선택
     setter = random.choice(players)
@@ -56,8 +63,16 @@ def multiplayer_guess_game(players):
 
         turn += 1
 
+    # 치사량 업데이트
+    for player in players:
+        if player != current_player:
+            player.drinking_capacity -= 1
+
+    print("\n게임 종료! 각 플레이어의 상태:")
+    show_drinks_status(players)
+
+
 if __name__ == "__main__":
-    
     # 테스트용 플레이어 생성
     players = [
         Player("예원", 5, False),  # 사용자
